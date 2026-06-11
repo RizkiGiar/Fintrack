@@ -1,6 +1,38 @@
-self.addEventListener('install', (e) => {
-  console.log('Service Worker Terpasang');
+const CACHE_NAME = 'fintrack-cache-v1';
+const assets = [
+  './',
+  './index.html'
+];
+
+// Pasang Service Worker ke Browser
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(assets);
+    })
+  );
+  self.skipWaiting();
 });
-self.addEventListener('fetch', (e) => {
-  // Biarkan fetch kosong untuk bypass syarat PWA offline Chrome
+
+// Aktifkan Service Worker
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
+  self.clients.claim();
+});
+
+// Jalankan Fetch demi kelancaran Web App Apps Script
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
+  );
 });
