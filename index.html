@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FinTrack</title>
+  
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <link rel="shortcut icon" href="https://img.icons8.com/fluency/96/wallet.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/192/wallet.png">
+  
+  <link rel="manifest" href="manifest.json">
 
+  <style>
+    body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0f172a; }
+    iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <iframe src="https://script.google.com/macros/s/AKfycbxNdNoEosYasSuUHuW_y-ecRf0vf90FCpg_NZr8f2hHmuz0kNR55NoqMIQ8UsoOuMOU/exec"></iframe>
+
+  <script>
+    // Registrasi Service Worker Lokal GitHub
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(() => console.log('PWA FinTrack Aktif di GitHub!'))
+          .catch(err => console.log('SW Gagal:', err));
+      });
+    }
+  </script>
+</body>
+</html>
