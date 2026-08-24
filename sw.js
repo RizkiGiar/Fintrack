@@ -1,10 +1,12 @@
-const CACHE_NAME = 'fintrack-cache-v3';
+const CACHE_NAME = 'fintrack-cache-v4';
 const assets = [
   './',
-  './index.html'
+  'index.html',
+  'manifest.json',
+  'logo-192x192.png',
+  'logo-512x512.png'
 ];
 
-// Pasang Service Worker ke Browser
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -14,7 +16,6 @@ self.addEventListener('install', e => {
   self.skipWaiting();
 });
 
-// Aktifkan Service Worker
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys => {
@@ -30,8 +31,12 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// Jalankan Fetch demi kelancaran Web App Apps Script
 self.addEventListener('fetch', e => {
+  // Bypass cache untuk iframe Google Apps Script agar aplikasi selalu update
+  if (e.request.url.includes('script.google.com')) {
+    return;
+  }
+  
   e.respondWith(
     fetch(e.request).catch(() => caches.match(e.request))
   );
