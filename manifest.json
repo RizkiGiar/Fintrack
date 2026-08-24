@@ -1,20 +1,18 @@
 {
-  "name": "FinTrack Keuangan",
+  "name": "FinTrack Dashboard",
   "short_name": "FinTrack",
-  "description": "Aplikasi Catat Keuangan Pribadi",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
-  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#3D79F2",
   "icons": [
     {
-      "src": "./logo-fintrack-192.png",
+      "src": "logo-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./logo-fintrack-512.png",
+      "src": "logo-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
