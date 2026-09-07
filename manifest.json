@@ -1,11 +1,11 @@
 {
-  "name": "FinTrack Dashboard",
+  "name": "FinTrack Pro",
   "short_name": "FinTrack",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3D79F2",
-  "icons": [
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a"
+}
     {
       "src": "logo-fintrack-192.png",
       "sizes": "192x192",
